@@ -13,113 +13,118 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   </head>
   <body>
-     <div class="container quiz-container">
+      <div class="container quiz-container">
         <!-- Header with theme toggle -->
         <header class="app-header">
-        <div class="d-flex align-items-center">
-            <span id="category-icon" class="category-icon" style="display: none;"></span>
-            <span id="category-text"></span>
-        </div>
-        <div class="theme-toggle d-flex align-items-center">
-            <span id="theme-text"><i class="ms-2 fas fa-sun"></i></span>
-            <div class="form-check form-switch ms-2">
-            <input class="form-check-input" type="checkbox" id="themeSwitch">
+            <div class="d-flex align-items-center">
+                <span id="category-icon" class="category-icon" style="display: none;"></span>
+                <span id="category-text"></span>
             </div>
-            <i class="ms-2 fas fa-moon"></i>
-        </div>
+            <div class="theme-toggle d-flex align-items-center">
+                <span id="theme-text"><i class="ms-2 fas fa-sun"></i></span>
+                <div class="form-check form-switch ms-2">
+                    <input class="form-check-input" type="checkbox" id="themeSwitch">
+                </div>
+                <i class="ms-2 fas fa-moon"></i>
+            </div>
         </header>
 
         <!-- Welcome Screen -->
         <div id="welcome-screen" class="screen active-screen">
-        <div class="row align-items-center" style="min-height: 80vh;">
-            <div class="col-lg-6">
-            <h1 class="mb-4">Bienvenido al <span class="text-purple fw-bold">Quiz de Frontend</span></h1>
-            <p class="text-muted mb-5">Pon a prueba tus conocimientos de frontend con nuestro cuestionario interactivo de HTML, CSS, JavaScript y Accesibilidad.</p>
-            <p class="mb-3 fw-bold">Elige un tema para comenzar:</p>
+            <div class="row align-self-lg-start" style="min-height: 80vh;">
+                <div class="col-lg-6 mt-4">
+                    <h1 class="mb-4">Welcome to the <br><span class="text-purple fw-bold fs-1 fw-bold ">Frontend
+                            Quiz!</span></h1>
+                    <p class="text-purple  mb-5">Pick a subject a got started</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="home-icon-container">
+                        <div class="category-card" data-category="html">
+                            <div class="category-icon html-icon">
+                                <i class="fab fa-html5 fa-lg text-white"></i>
+                            </div>
+                            <span class="ms-3 fw-bold">HTML</span>
+                        </div>
+
+                        <div class="category-card" data-category="css">
+                            <div class="category-icon css-icon">
+                                <i class="fab fa-css3-alt fa-lg text-white"></i>
+                            </div>
+                            <span class="ms-3 fw-bold">CSS</span>
+                        </div>
+
+                        <div class="category-card" data-category="javascript">
+                            <div class="category-icon js-icon">
+                                <i class="fab fa-js fa-lg text-white"></i>
+                            </div>
+                            <span class="ms-3 fw-bold">JavaScript</span>
+                        </div>
+
+                        <div class="category-card" data-category="accessibility">
+                            <div class="category-icon accessibility-icon">
+                                <i class="fas fa-universal-access fa-lg text-white"></i>
+                            </div>
+                            <span class="ms-3 fw-bold">Accesibilidad</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6">
-            <div class="home-icon-container">
-                <div class="category-card" data-category="html">
-                <div class="category-icon html-icon">
-                    <i class="fab fa-html5 fa-lg text-white"></i>
-                </div>
-                <span class="ms-3 fw-bold">HTML</span>
-                </div>
-                
-                <div class="category-card" data-category="css">
-                <div class="category-icon css-icon">
-                    <i class="fab fa-css3-alt fa-lg text-white"></i>
-                </div>
-                <span class="ms-3 fw-bold">CSS</span>
-                </div>
-                
-                <div class="category-card" data-category="javascript">
-                <div class="category-icon js-icon">
-                    <i class="fab fa-js fa-lg text-white"></i>
-                </div>
-                <span class="ms-3 fw-bold">JavaScript</span>
-                </div>
-                
-                <div class="category-card" data-category="accessibility">
-                <div class="category-icon accessibility-icon">
-                    <i class="fas fa-universal-access fa-lg text-white"></i>
-                </div>
-                <span class="ms-3 fw-bold">Accesibilidad</span>
-                </div>
-            </div>
-            </div>
-        </div>
         </div>
 
         <!-- Quiz Screen -->
         <div id="quiz-screen" class="screen">
-        <div class="mb-4">
-            <p class="text-muted">Pregunta <span id="current-question-num">1</span> de 10</p>
-            <h2 id="question-text" class="mb-4">Pregunta va aquí?</h2>
-        </div>
+            <div class="row align-items-start">
+                <!-- Columna izquierda: pregunta y barra -->
+                <div class="col-lg-6 mb-4">
+                    <p class="text-muted">Question <span id="current-question-num">1</span> of 10</p>
+                    <h2 id="question-text" class="mb-4">Pregunta va aquí?</h2>
+                    <div class="progress-container mt-lg-5">
+                        <div id="progress-bar" class="progress-bar"></div>
+                    </div>
+                </div>
 
-        <div class="progress-container">
-            <div id="progress-bar" class="progress-bar"></div>
-        </div>
-
-        <div class="quiz-card">
-            <div id="answers-container" class="mb-4">
-            <!-- Answer options will be generated here -->
+                <!-- Columna derecha: opciones y botón -->
+                <div class="col-lg-6">
+                    <div class="quiz-card p-3">
+                        <div id="answers-container" class="mb-4">
+                            <!-- Opciones de respuesta se generan aquí -->
+                        </div>
+                        <div class="text-end">
+                            <button id="next-btn" class="btn btn-purple" disabled>Submit answer</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="text-end">
-            <button id="next-btn" class="btn btn-purple" disabled>Siguiente Pregunta</button>
-            </div>
-        </div>
         </div>
 
         <!-- Results Screen -->
         <div id="results-screen" class="screen">
-        <div class="quiz-card result-card">
-            <h2 class="mb-4">¡Cuestionario completado!</h2>
-            
-            <div class="score-circle">
-            <div class="score-number" id="score-value">0</div>
-            <div class="score-text">de 10</div>
+            <div class="quiz-card result-card">
+                <h2 class="mb-4 text-start ms-5 fs-2 ">Quiz completed <br><span
+                        class="text-purple fw-bold fs-1 fw-bold"> You scored...</span></h2>
+
+                <div class="score-circle">
+                    <div class="score-number" id="score-value">0</div>
+                    <div class="score-text">de 10</div>
+                </div>
+
+                <h3 class="mb-4">My results</h3>
+
+                <div class="result-list" id="results-container">
+                    <!-- Results will be generated here -->
+                </div>
+
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <button id="restart-btn" class="btn btn-purple animation-fade-in">
+                        Play again
+                    </button>
+
+                    <!-- New: Volver al Inicio -->
+                    <button id="home-btn" class="btn btn-purple animation-fade-in" style="animation-delay:0.2s;">
+                        Home
+                    </button>
+                </div>
             </div>
-            
-            <h3 class="mb-4">Tus Resultados</h3>
-            
-            <div class="result-list" id="results-container">
-            <!-- Results will be generated here -->
-            </div>
-            
-            <div class="d-flex justify-content-center gap-3 mt-4">
-            <button id="restart-btn" class="btn btn-purple animation-fade-in">
-                Jugar de Nuevo
-            </button>
-            
-            <!-- New: Volver al Inicio -->
-            <button id="home-btn" class="btn btn-purple animation-fade-in" style="animation-delay:0.2s;">
-                Volver al Inicio
-            </button>
-            </div>
-        </div>
         </div>
     </div>
     <div id="app"></div>
