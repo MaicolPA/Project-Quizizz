@@ -1,4 +1,5 @@
 import './style.css'
+
 import { quizData } from './data/quizData'
      
     // DOM Elements
@@ -323,3 +324,4 @@ import { quizData } from './data/quizData'
 
     // Initialize the quiz
     initQuiz();
+
