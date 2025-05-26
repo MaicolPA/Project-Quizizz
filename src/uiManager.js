@@ -1,3 +1,6 @@
+
+import Swal from "sweetalert2";
+
 export function showScreen(screenId) {
      // Hide all screens
     document.getElementById('welcome-screen').classList.remove('active-screen');
@@ -133,6 +136,58 @@ export function selectAnswer(index) {
 export function showResults() {
     showScreen('results-screen');
 
+    let timerInterval;
+    if (window.score < 6) {
+            Swal.fire({
+                icon: "error",
+                title: "Reprobado!",
+                html: "<b>Has obtenido una calificación muy baja</b>. Revisa el material he <b>intentalo mas tarde</b>",
+                timer: 5000,
+                timerProgressBar: true,
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+    } else if (window.score < 8 && window.score >= 6) {
+            Swal.fire({
+                icon: "info",
+                title: "Aprobado",
+                html: "<b>Puedes mejorar esta calificación</b>. Revisa el material he <b>intentalo mas tarde</b>",
+                timer: 5000,
+                timerProgressBar: true,
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+    } else if (window.score <= 10 && window.score > 8) {
+            Swal.fire({
+                icon: "success",
+                title: "Excelente",
+                html: "Has obtenido una calificación <b>Sobresaliente</b>",
+                timer: 5000,
+                timerProgressBar: true,
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });      
+    }
+
+
      // Update score
     document.getElementById('score-value').textContent = window.score;
 
@@ -166,4 +221,5 @@ export function showResults() {
 
         resultsContainer.appendChild(resultItem);
     });
+    
 }
