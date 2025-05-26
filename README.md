@@ -30,24 +30,6 @@ Una aplicación web interactiva donde los usuarios pueden poner a prueba sus con
 
 ---
 
-## 🖥️ Vista previa
-
-### 🏁 Pantalla de inicio
-- Selección de categoría
-- Íconos y colores personalizados para cada área
-
-### ❓ Pantalla de preguntas
-- Pregunta y opciones de respuesta (A, B, C, D) generadas dinámicamente
-- Barra de progreso animada
-- Botón "Submit answer" que se habilita al seleccionar una opción
-
-### 🏆 Pantalla de resultados
-- Puntaje final con animación
-- Lista de respuestas con estado correcto/incorrecto
-- Botón para volver a jugar o regresar al inicio
-
----
-
 ## 📱 Responsividad
 
 Diseñado para adaptarse a todas las resoluciones:  
