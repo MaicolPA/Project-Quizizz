@@ -1,10 +1,10 @@
 export function showScreen(screenId) {
-    // Hide all screens
+     // Hide all screens
     document.getElementById('welcome-screen').classList.remove('active-screen');
     document.getElementById('quiz-screen').classList.remove('active-screen');
     document.getElementById('results-screen').classList.remove('active-screen');
 
-    // Show selected screen
+     // Show selected screen
     document.getElementById(screenId).classList.add('active-screen');
 }
 
@@ -20,22 +20,22 @@ export function displayCategoryInfo(category) {
             categoryIcon.classList.add('html-icon');
             categoryIcon.innerHTML = '<i class="fab fa-html5 fa-lg text-white"></i>';
             categoryText.textContent = 'HTML';
-            break;
+        break;
         case 'css':
             categoryIcon.classList.add('css-icon');
             categoryIcon.innerHTML = '<i class="fab fa-css3-alt fa-lg text-white"></i>';
             categoryText.textContent = 'CSS';
-            break;
+        break;
         case 'javascript':
             categoryIcon.classList.add('js-icon');
             categoryIcon.innerHTML = '<i class="fab fa-js fa-lg text-white"></i>';
             categoryText.textContent = 'JavaScript';
-            break;
+        break;
         case 'accessibility':
             categoryIcon.classList.add('accessibility-icon');
             categoryIcon.innerHTML = '<i class="fas fa-universal-access fa-lg text-white"></i>';
             categoryText.textContent = 'Accesibilidad';
-            break;
+        break;
     }
 }
 
@@ -44,21 +44,21 @@ export function loadQuestion() {
     const answersContainer = document.getElementById('answers-container');
     const nextBtn = document.getElementById('next-btn');
 
-    // Reset selected answer
+     // Reset selected answer
     window.selectedAnswerIndex = -1;
     nextBtn.disabled = true;
 
-    // Update question number
+     // Update question number
     document.getElementById('current-question-num').textContent = window.currentQuestionIndex + 1;
 
-    // Update progress bar
-    const progress = ((window.currentQuestionIndex) / window.currentQuestions.length) * 100;
+     // Update progress bar
+     const progress = ((window.currentQuestionIndex) / window.currentQuestions.length) * 100;
     document.getElementById('progress-bar').style.width = `${progress}%`;
 
-    // Set question text
+     // Set question text
     document.getElementById('question-text').textContent = question.question;
 
-    // Create answer options
+     // Create answer options
     answersContainer.innerHTML = '';
 
     const letters = ['A', 'B', 'C', 'D'];
@@ -70,15 +70,15 @@ export function loadQuestion() {
         answerOption.dataset.index = index;
 
         answerOption.innerHTML = `
-        <div class="option-letter">${letters[index]}</div>
-        <div class="option-text">${option}</div>
-        `;
+            <div class="option-letter">${letters[index]}</div>
+            <div class="option-text">${option}</div>
+            `;
 
         answerOption.addEventListener('click', () => selectAnswer(index));
         answersContainer.appendChild(answerOption);
     });
 
-    // Update button text for last question
+     // Update button text for last question
     if (window.currentQuestionIndex === window.currentQuestions.length - 1) {
         nextBtn.textContent = 'View your results';
     } else {
@@ -90,25 +90,25 @@ export function selectAnswer(index) {
     const nextBtn = document.getElementById('next-btn');
     const options = document.querySelectorAll('.answer-option');
 
-    // Prevent multiple selections once answered
+     // Prevent multiple selections once answered
     if (nextBtn.disabled === false && ['html', 'css', 'javascript', 'accessibility'].includes(window.currentCategory)) return;
 
-    // Remove selected class from all options
+     // Remove selected class from all options
     options.forEach(option => option.classList.remove('selected'));
 
-    // Add selected class to clicked option
+     // Add selected class to clicked option
     options[index].classList.add('selected');
     options[index].classList.add('animation-pulse');
 
-    // Enable next button
+     // Enable next button
     nextBtn.disabled = false;
 
-    // Update selected answer index
+     // Update selected answer index
     window.selectedAnswerIndex = index;
 
-    // Immediate feedback for HTML, CSS, JavaScript
+     // Immediate feedback for HTML, CSS, JavaScript
     if (['html', 'css', 'javascript', 'accessibility'].includes(window.currentCategory)) {
-        // Disable further clicks
+          // Disable further clicks
         options.forEach(opt => {
             opt.style.pointerEvents = 'none';
         });
@@ -133,10 +133,10 @@ export function selectAnswer(index) {
 export function showResults() {
     showScreen('results-screen');
 
-    // Update score
+     // Update score
     document.getElementById('score-value').textContent = window.score;
 
-    // Create results list
+     // Create results list
     const resultsContainer = document.getElementById('results-container');
     resultsContainer.innerHTML = '';
 
@@ -147,22 +147,22 @@ export function showResults() {
 
         const resultItem = document.createElement('div');
         resultItem.className = `result-item animation-fade-in ${isCorrect ? 'bg-success bg-opacity-10' : 'bg-danger bg-opacity-10'}`;
-        resultItem.style.animationDelay = `${index * 0.1}s`;
+          resultItem.style.animationDelay = `${index * 0.1}s`;
 
         resultItem.innerHTML = `
-        <div class="question-result-wrapper">
-            <div class="question-title">${index + 1}. ${question.question}</div>
-            <span class="badge ms-2 ${isCorrect ? 'badge-correct' : 'badge-incorrect'}">
-            ${isCorrect ? 'Correcto' : 'Incorrecto'}
-            </span>
-        </div>
-        <div class="user-answer ${isCorrect ? 'text-success' : 'text-danger'}">
-            Tu respuesta: ${question.options[userAnswer]}
-        </div>
-        ${!isCorrect ? `<div class="correct-answer text-success mt-1">
-            Respuesta correcta: ${question.options[correctAnswer]}
-        </div>` : ''}
-        `;
+            <div class="question-result-wrapper">
+                <div class="question-title">${index + 1}. ${question.question}</div>
+                <span class="badge ms-2 ${isCorrect ? 'badge-correct' : 'badge-incorrect'}">
+                ${isCorrect ? 'Correcto' : 'Incorrecto'}
+                </span>
+            </div>
+            <div class="user-answer ${isCorrect ? 'text-success' : 'text-danger'}">
+                Tu respuesta: ${question.options[userAnswer]}
+            </div>
+            ${!isCorrect ? `<div class="correct-answer text-success mt-1">
+                Respuesta correcta: ${question.options[correctAnswer]}
+            </div>` : ''}
+            `;
 
         resultsContainer.appendChild(resultItem);
     });

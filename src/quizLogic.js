@@ -20,12 +20,26 @@ export function startQuiz(category, startFromQuestion = 0) {
         answer === window.currentQuestions[index].correctAnswer
     ).length;
 
-    // Update UI
+     // Update UI
     showScreen('quiz-screen');
     displayCategoryInfo(category);
     loadQuestion();
 
-    // Save quiz state
+     // Save quiz state
+    saveQuizState();
+}
+
+export function playAgainQuiz() {
+    window.currentQuestionIndex = 0;
+    window.selectedAnswerIndex = -1;
+    window.userAnswers = [];
+    window.score = 0;
+
+    showScreen('quiz-screen');
+    displayCategoryInfo(window.currentCategory);
+    loadQuestion();
+
+    // Guardar el nuevo estado del quiz
     saveQuizState();
 }
 
@@ -37,11 +51,11 @@ export function restartQuiz() {
 
     showScreen('welcome-screen');
 
-    // Hide category icon
+     // Hide category icon
     const categoryIcon = document.getElementById('category-icon');
     categoryIcon.style.display = 'none';
     document.getElementById('category-text').textContent = '';
 
-    // Clear saved quiz state
+     // Clear saved quiz state
     localStorage.removeItem('quizState');
 }

@@ -3,6 +3,6 @@ export function toggleTheme() {
     const isDarkMode = document.body.classList.contains('dark-mode');
     document.getElementById('theme-text').textContent = isDarkMode ? 'Dark' : 'Light';
 
-    // Save theme preference
+     // Save theme preference
     localStorage.setItem('darkMode', isDarkMode);
 }
