@@ -26,7 +26,8 @@ Una aplicación web interactiva donde los usuarios pueden poner a prueba sus con
 - 🎨 CSS3
 - 🧠 JavaScript (DOM puro)  
 - 📦 Vite.js para bundling rápido y desarrollo moderno  
-- 🖼️ Bootstrap (solo para algunos estilos base)  
+- 🖼️ Bootstrap (solo para algunos estilos base)
+- sweetalert2 (Se debe instalar, comando: npm install sweetalert2)
 
 ---
 
@@ -55,6 +56,9 @@ Puedes usarlo, adaptarlo y compartirlo.
 Créditos al diseño original de Frontend Mentor como referencia visual.
 
 ---
+Clona este repositorio:
+   ```bash
+   git clone https://github.com/MaicolPA/Project-Quizizz
 
 🎯 ¡Gracias por revisar este proyecto!  
 
