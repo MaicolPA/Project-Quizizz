@@ -52,7 +52,7 @@ Una aplicación web interactiva donde los usuarios pueden poner a prueba sus con
 
 Diseñado para adaptarse a todas las resoluciones:  
 ✅ Escritorio  
-✅ Tabletas (opciones se apilan verticalmente)  
+✅ Tabletas  
 ✅ Dispositivos móviles
 
 ---
