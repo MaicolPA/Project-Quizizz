@@ -169,7 +169,7 @@ export function showResults() {
                     console.log("I was closed by the timer");
                 }
             });
-    } else if (window.score <= 10 && window.score > 8) {
+    } else if (window.score <= 10 && window.score >= 8) {
             Swal.fire({
                 icon: "success",
                 title: "Excelente",
